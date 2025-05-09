@@ -11,3 +11,7 @@ How to create NEW element in document:
 document.createElement('elementTagName');
 Then add attributes to the element created by element.setAttribute('attributeType','attributeValue').
 And then position the element as per requirements of our webPAGE in DOM tree.
+
+How to remove the elements in DOM:
+element.remove();
+*/
