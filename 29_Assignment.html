@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment One</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        button {
+            margin: 20px;
+            font-size: 20px;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </div>
+    <script>
+        let container = document.getElementById('container');
+        let startButton = document.getElementById('start');
+        let stopButton = document.getElementById('stop');
+        function bgColorChanger() {
+            let hex = '0123456789ABCDE';
+            let randomColor="#";
+            for(let i=1;i<=6;i++){
+                randomColor+=hex[Math.floor(Math.random()*15)];
+            }
+            console.log("Random Color = ",randomColor);
+            container.style.background = randomColor;
+        }
+
+        let bgColorChangerId;
+        startButton.addEventListener('click', () => {
+            if(!bgColorChangerId) bgColorChangerId = setInterval(bgColorChanger, 1000);
+        })
+        stopButton.addEventListener('click', function () {
+            clearInterval(bgColorChangerId);
+            bgColorChangerId = null;
+        });
+    </script>
+</body>
+
+</html>
