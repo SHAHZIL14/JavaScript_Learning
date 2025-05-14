@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Developer Card</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #212121;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .card {
+        background: #fff;
+        width: 300px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card .content {
+        padding: 20px;
+      }
+
+      .card h2 {
+        margin: 10px 0 5px;
+      }
+
+      .followers {
+        color: #555;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img id ="profileImage" src="" alt="Developer Photo">
+      <div class="content">
+        <h2>GitHub Developer</h2>
+        <p class="followers">
+          Followers: <span id="follower-count">Loading...</span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function getProfileDetails() {
+        const apiURL = "https://api.github.com/users/shahzil14";
+        const XHR = new XMLHttpRequest();
+        XHR.open("GET", apiURL);
+        XHR.send();
+        XHR.onload = () => {
+          if (XHR.readyState === XHR.DONE) {
+            if (XHR.status === 200) {
+              const data = JSON.parse(XHR.responseText);
+              let profilePic = data.avatar_url;
+              let follower_count = data.followers;
+              document.getElementById('profileImage').src = profilePic;
+              document.getElementById('follower-count').innerText = follower_count;
+            }
+          }
+        };
+      }
+      getProfileDetails();
+    </script>
+  </body>
+</html>
