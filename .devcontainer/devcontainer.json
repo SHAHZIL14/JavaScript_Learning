@@ -2,7 +2,7 @@
 	"name": "My Dev Container",
 	"image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
 	"features": {
-	  "ghcr.io/devcontainers/features/node:1": {
+	  "ghcr.io/devcontainers/features/node:2": {
 		"version": "18"
 	  },
 	  "ghcr.io/devcontainers/features/python:1": {
